@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from '../../src/environments/env';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,6 @@ import { Observable } from 'rxjs';
 export class PruebaapiService {
 
   private url = 'https://api-football-v1.p.rapidapi.com/v3/teams?id=2286';
-  private apiKey = '8de4bc925cmsh0306e4c16be65abp1563cfjsnc2a6f0eadb7a';
 
 
   constructor(
@@ -16,9 +16,9 @@ export class PruebaapiService {
   ) { }
 
   public getData(): Observable<any> {
+    const apiKey = environment.apiKey; // Accede a la clave API desde el objeto environment
     const headers = new HttpHeaders({
-      'X-RapidAPI-Key': this.apiKey,
-      // 'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
+      'X-RapidAPI-Key': apiKey
     });
 
     return this.http.get<any>(this.url, { headers });
