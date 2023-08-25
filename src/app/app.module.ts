@@ -8,11 +8,13 @@ import { HomeComponent } from './components/home/home.component';
 
 /* Prime NG */
 import { ButtonModule } from 'primeng/button';
+import { NavComponent } from './components/nav/nav.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,

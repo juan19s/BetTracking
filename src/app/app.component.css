@@ -1,0 +1,10 @@
+::ng-deep * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body svg{
+  width: 100%;
+  height: 100%;
+}
