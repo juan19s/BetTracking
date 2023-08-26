@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams  } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../src/environments/env';
@@ -8,7 +8,7 @@ import { environment } from '../../src/environments/env';
 })
 export class PruebaapiService {
 
-  private url = 'https://api-football-v1.p.rapidapi.com/v3/leagues';
+  private url = 'https://api-football-v1.p.rapidapi.com/v3/';
 
 
   constructor(
@@ -22,5 +22,15 @@ export class PruebaapiService {
     });
 
     return this.http.get<any>(this.url, { headers });
+  }
+
+  public getDataByPais(pais: string, teams: string): Observable<any> {
+    const apiKey = environment.apiKey;
+    const params = new HttpParams().set('country', pais); // Agrega los parámetros a la URL
+    const headers = new HttpHeaders({
+      'X-RapidAPI-Key': apiKey
+    });
+
+    return this.http.get<any>(this.url + teams, { headers, params }); // Agrega los parámetros a la petición
   }
 }

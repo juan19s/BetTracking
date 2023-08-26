@@ -16,6 +16,10 @@ export class LeaguesService {
     return this.http.post(`${this.apiBaseUrl}/api/leagues/insert`, leagueData);
   }
 
+  insertTeam(teamData: any) {
+    return this.http.post(`${this.apiBaseUrl}/api/leagues/insertTeam`, teamData);
+  }
+
   insertNose(nose: any) {
     return this.http.post(`${this.apiBaseUrl}/api/leagues/insertNose`, nose);
   }
