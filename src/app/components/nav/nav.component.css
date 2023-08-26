@@ -7,7 +7,7 @@
 .nav{
     width: 100%;
     height: 50px;
-    background-color: #000;
+    background-color: #E04742;
 }
 
 .nav__main-container{
@@ -24,7 +24,7 @@
 }
 
 .nav__item-link{
-    color: #f52929;
+    color: #ffffff;
     font-family: 'Roboto', sans-serif;
     text-decoration: none;
     padding: 15px;
@@ -35,5 +35,5 @@
 
 .nav__item-link:hover{
     color: #fff;
-    background-color: #f52929;
+    background-color: #ff6969;
 }
