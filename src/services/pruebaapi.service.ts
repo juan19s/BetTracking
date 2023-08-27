@@ -8,7 +8,7 @@ import { environment } from '../../src/environments/env';
 })
 export class PruebaapiService {
 
-  private url = 'https://api-football-v1.p.rapidapi.com/v3/';
+  private url = 'https://api-football-v1.p.rapidapi.com/v3/timezone';
 
 
   constructor(
@@ -16,6 +16,15 @@ export class PruebaapiService {
   ) { }
 
   public getData(): Observable<any> {
+    const apiKey = environment.apiKey; // Accede a la clave API desde el objeto environment
+    const headers = new HttpHeaders({
+      'X-RapidAPI-Key': apiKey
+    });
+
+    return this.http.get<any>(this.url, { headers });
+  }
+
+  public getTimeZone(): Observable<any> {
     const apiKey = environment.apiKey; // Accede a la clave API desde el objeto environment
     const headers = new HttpHeaders({
       'X-RapidAPI-Key': apiKey

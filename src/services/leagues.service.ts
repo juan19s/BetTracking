@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -20,6 +20,10 @@ export class LeaguesService {
     return this.http.post(`${this.apiBaseUrl}/api/leagues/insertTeam`, teamData);
   }
 
+  insertTimeZone(time: any) {
+    return this.http.post(`${this.apiBaseUrl}/api/leagues/insertTimeZone`, time);
+  }
+
   insertNose(nose: any) {
     return this.http.post(`${this.apiBaseUrl}/api/leagues/insertNose`, nose);
   }
@@ -30,5 +34,14 @@ export class LeaguesService {
 
   getNose() {
     return this.http.get(`${this.apiBaseUrl}/api/leagues/nose`);
+  }
+
+  getTeams() {
+    return this.http.get(`${this.apiBaseUrl}/api/leagues/getTeams`);
+  }
+
+  getTeamsByCountry(country: string) {
+    const params = new HttpParams().set('country', country); // Agregar el parámetro 'country'
+    return this.http.get(`${this.apiBaseUrl}/api/leagues/getTeamsByCountry`, { params });
   }
 }

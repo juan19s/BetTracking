@@ -17,9 +17,9 @@ export class HomeComponent {
     ) { }
 
   ngOnInit(): void {
-    // this.leagues.getLeagues().subscribe(data => {
-    //   console.log(data);
-    // });
+    this.leagues.getTeamsByCountry('Argentina').subscribe(data => {
+      console.log(data);
+    });
     // this.apiService.getDataByPais('Peru', 'teams').subscribe(data => {
     //   this.responseData = data.response;
     //   console.log(this.responseData);
@@ -28,7 +28,7 @@ export class HomeComponent {
     // this.leagues.getLeagues().subscribe(data => {
     //   console.log(data);
     // });
-    // this.apiService.getData().subscribe(data => {
+    // this.apiService.getTimeZone().subscribe(data => {
     //   this.responseData = data.response;
     //   // console.log(this.responseData); // Puedes hacer lo que necesites con los datos aquí
     //   this.fillTable();
@@ -48,22 +48,25 @@ export class HomeComponent {
   fillTable(): void {
     this.responseData.forEach((element: any) => {
       // console.log(element);
+      // let insert = {
+      //   team_id: element.team.id,
+      //   code: element.team.code,
+      //   country: element.team.country,
+      //   founded: element.team.founded,
+      //   logo: element.team.logo,
+      //   name: element.team.name,
+      //   national: element.team.national,
+      //   capacidad_venue: element.venue.capacity,
+      //   city: element.venue.city,
+      //   id_venue: element.venue.id,
+      //   image_venue: element.venue.image,
+      //   name_venue: element.venue.name
+      // }
       let insert = {
-        team_id: element.team.id,
-        code: element.team.code,
-        country: element.team.country,
-        founded: element.team.founded,
-        logo: element.team.logo,
-        name: element.team.name,
-        national: element.team.national,
-        capacidad_venue: element.venue.capacity,
-        city: element.venue.city,
-        id_venue: element.venue.id,
-        image_venue: element.venue.image,
-        name_venue: element.venue.name
+        time_zone: element
       }
       console.log(insert);
-      this.leagues.insertTeam(insert).subscribe(data => {
+      this.leagues.insertTimeZone(insert).subscribe(data => {
         // console.log(data);
       });
     });
