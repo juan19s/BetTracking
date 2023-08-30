@@ -20,6 +20,10 @@ export class LeaguesService {
     return this.http.post(`${this.apiBaseUrl}/api/leagues/insertTeam`, teamData);
   }
 
+  insertMatch(match: any) {
+    return this.http.post(`${this.apiBaseUrl}/api/leagues/insertMatch`, match);
+  }
+
   insertTimeZone(time: any) {
     return this.http.post(`${this.apiBaseUrl}/api/leagues/insertTimeZone`, time);
   }
@@ -43,5 +47,22 @@ export class LeaguesService {
   getTeamsByCountry(country: string) {
     const params = new HttpParams().set('country', country); // Agregar el parámetro 'country'
     return this.http.get(`${this.apiBaseUrl}/api/leagues/getTeamsByCountry`, { params });
+  }
+
+  getTeamsByLeaugeId(league_id: number) {
+    const params = new HttpParams().set('league_id', league_id); // Agregar el parámetro 'country'
+    return this.http.get(`${this.apiBaseUrl}/api/leagues/getTeamsByLeagueId`, { params });
+  }
+
+  getLeagueById(league_id: number) {
+    const params = new HttpParams().set('league_id', league_id); // Agregar el parámetro 'country'
+    return this.http.get(`${this.apiBaseUrl}/api/leagues/getLeagueById`, { params });
+  }
+
+  updateTeamLeague(team_id: number, league_id: number) {
+    const url = `${this.apiBaseUrl}/api/leagues/updateTeamLeague`;
+
+    // Aquí se envía la solicitud PUT con los datos necesarios
+    return this.http.put(url, { team_id: team_id, league_id: league_id });
   }
 }

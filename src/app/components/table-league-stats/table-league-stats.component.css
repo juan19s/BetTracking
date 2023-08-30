@@ -1,0 +1,27 @@
+body{
+  width: 70%;
+  margin: 0 auto;
+}
+
+h4{
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  color: #333; /* Color del texto */
+}
+
+.league-title{
+  margin: 15px 0;
+  display: flex;
+  align-items: center;
+}
+
+.league-icon{
+  width: 35px;
+  height: 30px;
+  margin-left: 10px;
+}
+.team-icon{
+  width: 30px;
+  height: 30px;
+}
