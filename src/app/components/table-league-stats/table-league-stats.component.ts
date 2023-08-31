@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { LeaguesService } from 'src/services/leagues.service';
 import { PruebaapiService } from 'src/services/pruebaapi.service';
 
@@ -13,18 +14,27 @@ export class TableLeagueStatsComponent {
   league: any;
   league_icon: string = '';
   league_name: string = '';
-  league_id: number = 39;
+  league_id: number = 0;
 
 
   constructor(
     private apiService: PruebaapiService,
     private leagues: LeaguesService,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
+    this.route.paramMap.subscribe(params => {
+      this.league_id = Number(params.get('id'));
+      console.log(this.league_id);
+      // Aquí puedes usar el idLeague para realizar las operaciones necesarias
+    });
     this.leagues.getTeamsByLeaugeId(this.league_id).subscribe(data => {
       this.teams = data;
-      // console.log(data);
+      this.teams = this.teams.sort((a: any, b: any) => {
+        return a.position - b.position;
+      });
+      console.log(data);
     });
     this.leagues.getLeagueById(this.league_id).subscribe(data => {
       this.league = data;

@@ -18,6 +18,10 @@ body h1{
   justify-content: space-evenly
 }
 
+a{
+  text-decoration: none;
+}
+
 :host ::ng-deep .p-card .p-card-subtitle,
 :host ::ng-deep .p-card .p-card-title {
   font-size: 20px;
@@ -30,6 +34,7 @@ body h1{
 :host ::ng-deep .p-card {
   width: 30%;
   display: flex;
+  height: 400px;
   flex-direction: column;
   margin: 15px 0;
   align-items: center;
@@ -39,7 +44,7 @@ body h1{
 :host ::ng-deep .p-card-header {
   text-align: center;
   width: 100px;
-  height: 100px;
+  height: min-content;
   margin: 0 auto;
 }
 

@@ -3,23 +3,31 @@
     <h4>{{ league_name }}</h4>
     <img src="{{league_icon}}" alt="Imagen liga" class="league-icon">
   </div>
-  <p-table [value]="teams" [tableStyle]="{ 'min-width': '50rem' }">
+  <p-table [value]="teams" [tableStyle]="{ 'min-width': '50rem' }" styleClass="p-datatable-sm">
     <ng-template pTemplate="header">
         <tr>
-            <th>Nombre</th>
-            <th>Ciudad</th>
-            <th>Logo</th>
-            <th>Estadio</th>
-            <th>Capacidad</th>
+          <th>Logo</th>
+          <th>Nombre</th>
+          <th>Ciudad</th>
+          <!-- <th>Estadio</th>
+          <th>Capacidad</th> -->
+          <th>Posición</th>
+          <th>PJ</th>
+          <th>Dif</th>
+          <th>Puntos</th>
         </tr>
     </ng-template>
     <ng-template pTemplate="body" let-team>
         <tr>
-            <td>{{ team.name }}</td>
-            <td>{{ team.city }}</td>
-            <td><img class="team-icon" src="{{ team.logo }}" alt="Logo equipo"></td>
-            <td>{{ team.name_venue }}</td>
-            <td>{{ team.capacidad_venue }}</td>
+          <td><img class="team-icon" src="{{ team.logo }}" alt="Logo equipo"></td>
+          <td>{{ team.name }}</td>
+          <td>{{ team.city }}</td>
+          <!-- <td>{{ team.name_venue }}</td>
+          <td>{{ team.capacidad_venue }}</td> -->
+          <td>{{ team.position }}</td>
+          <td>{{ team.matches_played }}</td>
+          <td>{{ team.goals_dif }}</td>
+          <td>{{ team.points }}</td>
         </tr>
     </ng-template>
   </p-table>

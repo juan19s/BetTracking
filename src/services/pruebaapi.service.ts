@@ -8,7 +8,7 @@ import { environment } from '../../src/environments/env';
 })
 export class PruebaapiService {
 
-  private url = 'https://api-football-v1.p.rapidapi.com/v3/fixtures';
+  private url = 'https://api-football-v1.p.rapidapi.com/v3/standings';
 
 
   constructor(
@@ -43,8 +43,17 @@ export class PruebaapiService {
     return this.http.get<any>(this.url + teams, { headers, params }); // Agrega los parámetros a la petición
   }
 
-
   public getFixturesByLeagueId(id: number, season: number): Observable<any> {
+    const apiKey = environment.apiKey;
+    const params = new HttpParams().set('league', id).set('season', season); // Agrega los parámetros a la URL
+    const headers = new HttpHeaders({
+      'X-RapidAPI-Key': apiKey
+    });
+
+    return this.http.get<any>(this.url, { headers, params }); // Agrega los parámetros a la petición
+  }
+
+  public getStandingsByLeagueId(id: number, season: number): Observable<any> {
     const apiKey = environment.apiKey;
     const params = new HttpParams().set('league', id).set('season', season); // Agrega los parámetros a la URL
     const headers = new HttpHeaders({

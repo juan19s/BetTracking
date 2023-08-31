@@ -65,4 +65,15 @@ export class LeaguesService {
     // Aquí se envía la solicitud PUT con los datos necesarios
     return this.http.put(url, { team_id: team_id, league_id: league_id });
   }
+
+  updateStandings(team_id: number, updateData: {}) {
+    const url = `${this.apiBaseUrl}/api/leagues/updateStandings`;
+
+    // Combinar team_id con los datos de actualización
+    const requestData = { team_id: team_id, ...updateData };
+
+    // Enviar la solicitud PUT con los datos necesarios
+    return this.http.put(url, requestData);
+  }
+
 }
