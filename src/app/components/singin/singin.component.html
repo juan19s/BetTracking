@@ -1,0 +1,24 @@
+<body>
+  <div class="login-container">
+    <p-card header="Registrar Usuario">
+      <form>
+        <span class="p-float-label">
+          <input [(ngModel)]="username" pInputText id="username" class="form-control" name="uwu"/>
+          <label htmlFor="username">Nombre de Usuario</label>
+        </span>
+        <span class="p-float-label">
+          <input [(ngModel)]="password" pInputText id="password" class="form-control" name="uwu"/>
+          <label for="password">Contraseña</label>
+        </span>
+        <span class="p-float-label">
+          <input [(ngModel)]="confirm_password" pInputText id="password" class="form-control" name="uwu"/>
+          <label for="password">Repetir Contraseña</label>
+        </span>
+        <p-button (click)="addUser()" type="submit" label="Iniciar Sesión"></p-button>
+      </form>
+      <p class="texto-registrarse">Ya tienes cuenta? <a routerLink="/login">Iniciar Sesión</a></p>
+    </p-card>
+  </div>
+</body>
+
+<p-toast position="top-center" key="tc"></p-toast>

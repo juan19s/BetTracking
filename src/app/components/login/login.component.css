@@ -1,0 +1,37 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+}
+
+
+:host ::ng-deep .p-card {
+  width: 400px; /* Ajusta el ancho de la tarjeta según tus necesidades */
+  padding: 20px;
+  text-align: center;
+  margin-top: 40%;
+}
+
+span, input, label {
+  width: 100%; /* Ajusta el ancho de la tarjeta según tus necesidades */
+  text-align: left;
+}
+
+.p-float-label {
+  margin-bottom: 28px;
+}
+
+.p-button {
+  margin-top: 25px;
+}
+
+.texto-registrarse {
+  margin-top: 15px;
+  text-align: center;
+  display: block;
+  font-size: small;
+}
+
+.texto-registrarse a {
+  color: #007bff;
+  text-decoration: none;
+}
