@@ -9,11 +9,19 @@
   padding: 20px;
   text-align: center;
   margin-top: 40%;
+  /* border: solid 1px red; */
+  background-color: rgb(242, 242, 242);
 }
 
-span, input, label {
+:host ::ng-deep .p-password input,
+:host ::ng-deep .p-password {
+  width: 100%;
+}
+
+input, label, p-password {
   width: 100%; /* Ajusta el ancho de la tarjeta según tus necesidades */
   text-align: left;
+  /* border: solid 1px red; */
 }
 
 .p-float-label {

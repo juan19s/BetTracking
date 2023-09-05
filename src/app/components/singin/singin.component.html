@@ -3,18 +3,26 @@
     <p-card header="Registrar Usuario">
       <form>
         <span class="p-float-label">
-          <input [(ngModel)]="username" pInputText id="username" class="form-control" name="uwu"/>
+          <input [(ngModel)]="username" pInputText id="username" name="uwu"/>
           <label htmlFor="username">Nombre de Usuario</label>
         </span>
-        <span class="p-float-label">
+        <!-- <span class="p-float-label">
           <input [(ngModel)]="password" pInputText id="password" class="form-control" name="uwu"/>
           <label for="password">Contraseña</label>
         </span>
         <span class="p-float-label">
           <input [(ngModel)]="confirm_password" pInputText id="password" class="form-control" name="uwu"/>
           <label for="password">Repetir Contraseña</label>
+        </span> -->
+        <span class="p-float-label">
+          <p-password class="ola" [(ngModel)]="password" [feedback]="false" id="password" [toggleMask]="true" name="uwu"></p-password>
+          <label for="password">Contraseña</label>
         </span>
-        <p-button (click)="addUser()" type="submit" label="Iniciar Sesión"></p-button>
+        <span class="p-float-label">
+          <p-password [(ngModel)]="confirm_password" [feedback]="false" id="password" [toggleMask]="true" name="uwu"></p-password>
+          <label for="password">Repetir Contraseña</label>
+        </span>
+        <p-button (click)="addUser()" type="submit" label="Registrarse"></p-button>
       </form>
       <p class="texto-registrarse">Ya tienes cuenta? <a routerLink="/login">Iniciar Sesión</a></p>
     </p-card>

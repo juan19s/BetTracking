@@ -18,6 +18,7 @@ import { TableModule } from 'primeng/table';
 import { CardModule } from 'primeng/card';
 import { InputTextModule } from 'primeng/inputtext';
 import { ToastModule } from 'primeng/toast';
+import { PasswordModule } from 'primeng/password';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { ToastModule } from 'primeng/toast';
     InputTextModule,
     FormsModule,
     ToastModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    PasswordModule
   ],
   providers: [],
   bootstrap: [AppComponent]

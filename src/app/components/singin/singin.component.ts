@@ -23,6 +23,8 @@ export class SinginComponent {
     if (this.username == '' || this.password == '' || this.confirm_password == '') {
       this.showTopCenter();
       return;
+    } else {
+      console.log('ola usuario');
     }
   }
 
