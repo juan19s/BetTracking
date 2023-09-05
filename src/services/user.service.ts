@@ -13,11 +13,14 @@ export class UserService {
 
   constructor(private http: HttpClient) {
     this.myAppUrl = url.url;
-    this.myApiUrl = 'api/users/';
+    this.myApiUrl = 'api/login/';
   }
 
   singIn(user: User): Observable<User> {
-    return this.http.post<User>(this.myAppUrl + this.myApiUrl, user);
+    return this.http.post<User>(this.myAppUrl + this.myApiUrl + 'createUser', user);
   }
 
+  login(user: User): Observable<User> {
+    return this.http.post<User>(this.myAppUrl + this.myApiUrl + 'loginUser', user);
+  }
 }

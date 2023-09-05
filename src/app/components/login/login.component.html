@@ -3,16 +3,18 @@
     <p-card header="Iniciar Sesión">
       <form>
         <span class="p-float-label">
-          <input pInputText id="username" class="form-control"/>
+          <input pInputText id="username" class="form-control" [(ngModel)]="username" name="uwu"/>
           <label htmlFor="username">Nombre de Usuario</label>
         </span>
         <span class="p-float-label">
-          <input pInputText id="password" class="form-control"/>
+          <input pInputText id="password" class="form-control" [(ngModel)]="password" name="uwu"/>
           <label for="password">Contraseña</label>
         </span>
-        <p-button type="submit" label="Iniciar Sesión" routerLink="/home"></p-button>
+        <p-button (click)="login()" type="submit" label="Iniciar Sesión"></p-button>
       </form>
       <p class="texto-registrarse">No tienes cuenta? <a routerLink="/singin">Registrarse</a></p>
     </p-card>
   </div>
 </body>
+
+<p-toast position="top-center" key="tc"></p-toast>
