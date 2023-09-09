@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { LeaguesService } from 'src/services/leagues.service';
+import { MatchesService } from 'src/services/matches.service';
 import { PruebaapiService } from 'src/services/pruebaapi.service';
 
 @Component({
@@ -17,22 +18,38 @@ export class HomeComponent {
   leagues_data: any = [];
   standings: any = [];
   standingsData: any = [];
+  date: Date = new Date();
 
   constructor(
     private apiService: PruebaapiService,
     private leagues: LeaguesService,
+    private matches: MatchesService
     ) { }
 
   ngOnInit(): void {
+    // Obtener los componentes de la fecha y hora
+    const año = this.date.getFullYear();
+    const mes = String(this.date.getMonth() + 1).padStart(2, '0'); // Sumar 1 al mes ya que los meses en JavaScript van de 0 a 11
+    const día = String(this.date.getDate()).padStart(2, '0');
+
+    // Formatear la fecha en el formato deseado
+    const startDate = `${año}-${mes}-${día}T00:00:00`;
+    const endDate = `${año}-${mes}-${día}T23:59:59`;
+
+    console.log(startDate); // Imprime "2023-09-07T00:00:00"
+    this.matches.getMatchesByDate(startDate).subscribe(data => {
+      this.responseData = data;
+      console.log(this.responseData);
+      // this.fillTable();
+    });
     // this.leagues.getTeamsByLeaugeId(253).subscribe(data => {
     //   this.teams = data;
     //   console.log(data);
     // });
     let leagues_ids = [39, 61, 140, 78, 135, 262]
-    let leaguee: any = [];
     leagues_ids.forEach(element => {
       this.leagues.getLeagueById(element).subscribe(data => {
-        leaguee = data;
+        let leaguee: any = data;
         this.leagues_data.push({
           id: leaguee[0].league_id,
           name: leaguee[0].name,
@@ -46,22 +63,24 @@ export class HomeComponent {
 
     /*  ------------------- Para actuallizar las ligas del home cada dia uwuuwuwuwuwuwu ---------------- */
     // let xd = [39, 61, 140, 78, 135];// Para actualizar las ligas del home cada dia uwuuwuwuwuwuwu
-    // // let xd = [262];// Para mexico uwuuwuwuwuwuwu
+    // let xd = [262];// Para mexico uwuuwuwuwuwuwu
     // xd.forEach(element => {
-    //   this.apiService.getStandingsByLeagueId(element, 2023).subscribe(data => {
-    //     this.standingsData = data.response[0].league;
-    //     this.standings = data.response[0].league.standings[0];// Para actualizar las ligas del home cada dia uwuuwuwuwuwuwu
-    //     // this.standings = data.response[0].league.standings[1];// Para mexico uwuuwuwuwuwuwu
-    //     console.log(this.standingsData);
+      //   this.apiService.getStandingsByLeagueId(element, 2023).subscribe(data => {
+        //     this.standingsData = data.response[0].league;
+        //     // this.standings = data.response[0].league.standings[0];// Para actualizar las ligas del home cada dia uwuuwuwuwuwuwu
+        //     this.standings = data.response[0].league.standings[1];// Para mexico uwuuwuwuwuwuwu
+        //     console.log(this.standingsData);
     //     this.updateStandings();
     //   });
     // });
     /*  ------------------- Para actuallizar las ligas del home cada dia uwuuwuwuwuwuwu ---------------- */
-
-    // this.apiService.getFixturesByLeagueId(264, 2023).subscribe(data => {
-    //   this.responseData = data.response;
-    //   console.log(this.responseData);
-    //   this.fillTable();
+    
+    // xd.forEach(element => {
+    //   this.apiService.getFixturesByLeagueId(element, 2023).subscribe(data => {
+    //     this.responseData = data.response;
+    //     console.log(this.responseData);
+    //     this.fillTable();
+    //   });
     // });
     // this.apiService.getDataByPais('Peru', 'teams').subscribe(data => {
     //   this.responseData = data.response;
@@ -91,7 +110,7 @@ export class HomeComponent {
   fillTable(): void {
     // console.log(this.leagues_data[0].logo);
     // let teams: number[] = []
-    this.standings.forEach((element: any) => {
+    this.responseData.forEach((element: any) => {
       // let raoundentero = element.league.round;
       // let partes = raoundentero.split(" - ");
       // let round = partes[1];
@@ -111,7 +130,8 @@ export class HomeComponent {
       //   id_team_away: element.teams.away.id,
       //   winner_home: element.teams.home.winner,
       //   goals_home: element.goals.home,
-      //   goals_away: element.goals.away
+      //   goals_away: element.goals.away,
+      //   id_match: element.fixture.id,
       // }
       // console.log(insert);
       // this.leagues.insertMatch(insert).subscribe(data => {
@@ -180,4 +200,7 @@ export class HomeComponent {
   // }
   /*  ------------------- Para actuallizar las ligas del home cada dia uwuuwuwuwuwuwu ---------------- */
 
+  changeDate(): void {
+    console.log(this.date);
+  }
 }

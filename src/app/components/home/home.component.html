@@ -1,5 +1,10 @@
 <body>
   <h1>Bienvenido a BetCraxker</h1>
+  <div class="card flex justify-content-center">
+    <p-calendar [(ngModel)]="date" [showIcon]="true" (ngModelChange)="changeDate()"></p-calendar>
+
+    <h4></h4>
+  </div>
 
   <div class="cards">
     <div *ngFor="let league of leagues_data">
@@ -15,4 +20,5 @@
       </a>
     </div>
   </div>
+
 </body>

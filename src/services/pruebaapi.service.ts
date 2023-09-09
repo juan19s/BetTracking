@@ -8,7 +8,7 @@ import { environment } from '../../src/environments/env';
 })
 export class PruebaapiService {
 
-  private url = 'https://api-football-v1.p.rapidapi.com/v3/standings';
+  private url = 'https://api-football-v1.p.rapidapi.com/v3/fixtures';
 
 
   constructor(

@@ -66,6 +66,13 @@ export class LeaguesService {
     return this.http.put(url, { team_id: team_id, league_id: league_id });
   }
 
+  updateMatch(id: number) {
+    const url = `${this.apiBaseUrl}/api/leagues/updateMatch`;
+
+    // Aquí se envía la solicitud PUT con los datos necesarios
+    return this.http.put(url, { id: id });
+  }
+
   updateStandings(team_id: number, updateData: {}) {
     const url = `${this.apiBaseUrl}/api/leagues/updateStandings`;
 
