@@ -38,7 +38,8 @@ export class TableLeagueStatsComponent {
     });
     this.leagues.getLeagueById(this.league_id).subscribe(data => {
       this.league = data;
-      this.league_icon = this.league[0].logo;
+      console.log(data);
+      this.league_icon = this.league[0].flag;
       this.league_name = this.league[0].name;
       // console.log(this.league);
     });

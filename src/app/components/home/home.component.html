@@ -3,9 +3,29 @@
   <div class="card flex justify-content-center">
     <p-calendar [(ngModel)]="date" [showIcon]="true" (ngModelChange)="changeDate()"></p-calendar>
 
-    <h4></h4>
+    <div class="table">
+      <p-table [value]="matches_today" [tableStyle]="{ 'min-width': '50rem' }" styleClass="p-datatable-sm">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Local</th>
+                <th>Liga</th>
+                <th>Visita</th>
+                <th>Fecha</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-match>
+            <tr>
+                <td>{{ match.team_home }}</td>
+                <td>{{ match.league }}</td>
+                <td>{{ match.team_away }}</td>
+                <td>{{ match.date | date }}</td>
+            </tr>
+        </ng-template>
+    </p-table>
+    </div>
   </div>
 
+  <h2 class="subtitle">Competiciones más populares</h2>
   <div class="cards">
     <div *ngFor="let league of leagues_data">
       <a [routerLink]="['/league', league.id]">

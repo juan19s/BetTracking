@@ -1,9 +1,9 @@
-body{
+body {
   width: 70%;
   margin: 0 auto;
 }
 
-body h1{
+body h1 {
   margin: 15px 0;
   text-align: center;
   font-family: 'Roboto', sans-serif;
@@ -12,13 +12,31 @@ body h1{
   color: #333; /* Color del texto */
 }
 
-.cards{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly
+tr:hover {
+  background-color: #f5f5f5;
+  cursor: pointer;
 }
 
-a{
+.table {
+  margin-top: 10px;
+}
+
+.subtitle {
+  margin-top: 20px;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  color: #333; /* Color del texto */
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between
+}
+
+a {
   text-decoration: none;
 }
 
@@ -34,11 +52,17 @@ a{
 :host ::ng-deep .p-card {
   width: 30%;
   display: flex;
-  height: 400px;
+  height: 420px;
   flex-direction: column;
   margin: 15px 0;
   align-items: center;
   justify-content: center;
+}
+
+:host ::ng-deep .p-card:hover {
+  transform: scale(1.02); /* Escala el elemento al 105% del tamaño original */
+  transition: transform 0.3s ease; /* Agrega una transición suave */
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3); /* Agrega una sombra sutile para dar profundidad */
 }
 
 :host ::ng-deep .p-card-header {

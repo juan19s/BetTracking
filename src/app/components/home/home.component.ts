@@ -17,6 +17,7 @@ export class HomeComponent {
   league_name: string = '';
   leagues_data: any = [];
   standings: any = [];
+  matches_today: any = [];
   standingsData: any = [];
   date: Date = new Date();
 
@@ -26,22 +27,23 @@ export class HomeComponent {
     private matches: MatchesService
     ) { }
 
+    products = [
+      {
+        id: '1000',
+        code: 'f230fh0g3',
+        name: 'Bamboo Watch',
+        description: 'Product Description',
+        image: 'bamboo-watch.jpg',
+        price: 65,
+        category: 'Accessories',
+        quantity: 24,
+        inventoryStatus: 'INSTOCK',
+        rating: 5
+    },
+  ]
+  selectedProduct: any;
   ngOnInit(): void {
-    // Obtener los componentes de la fecha y hora
-    const año = this.date.getFullYear();
-    const mes = String(this.date.getMonth() + 1).padStart(2, '0'); // Sumar 1 al mes ya que los meses en JavaScript van de 0 a 11
-    const día = String(this.date.getDate()).padStart(2, '0');
-
-    // Formatear la fecha en el formato deseado
-    const startDate = `${año}-${mes}-${día}T00:00:00`;
-    const endDate = `${año}-${mes}-${día}T23:59:59`;
-
-    console.log(startDate); // Imprime "2023-09-07T00:00:00"
-    this.matches.getMatchesByDate(startDate).subscribe(data => {
-      this.responseData = data;
-      console.log(this.responseData);
-      // this.fillTable();
-    });
+    this.changeDate();
     // this.leagues.getTeamsByLeaugeId(253).subscribe(data => {
     //   this.teams = data;
     //   console.log(data);
@@ -74,7 +76,7 @@ export class HomeComponent {
     //   });
     // });
     /*  ------------------- Para actuallizar las ligas del home cada dia uwuuwuwuwuwuwu ---------------- */
-    
+
     // xd.forEach(element => {
     //   this.apiService.getFixturesByLeagueId(element, 2023).subscribe(data => {
     //     this.responseData = data.response;
@@ -201,6 +203,21 @@ export class HomeComponent {
   /*  ------------------- Para actuallizar las ligas del home cada dia uwuuwuwuwuwuwu ---------------- */
 
   changeDate(): void {
-    console.log(this.date);
+    // console.log(this.date);
+    // Obtener los componentes de la fecha y hora
+    const año = this.date.getFullYear();
+    const mes = String(this.date.getMonth() + 1).padStart(2, '0'); // Sumar 1 al mes ya que los meses en JavaScript van de 0 a 11
+    const día = String(this.date.getDate()).padStart(2, '0');
+
+    // Formatear la fecha en el formato deseado
+    const startDate = `${año}-${mes}-${día}T06:00:00`;
+    const endDate = `${año}-${mes}-${día}T23:59:59`;
+
+    console.log(startDate, endDate); // Imprime "2023-09-07T00:00:00"
+    this.matches.getMatchesByDate(startDate, endDate).subscribe(data => {
+      this.matches_today = data;
+      console.log(this.matches_today);
+      // this.fillTable();
+    });
   }
 }

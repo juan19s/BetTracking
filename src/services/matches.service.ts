@@ -12,8 +12,8 @@ export class MatchesService {
     private http: HttpClient
   ) { }
 
-  getMatchesByDate(date: any) {
-    const params = new HttpParams().set('date', date); // Agregar el parámetro 'country'
+  getMatchesByDate(startDate: any, endDate: any) {
+    const params = new HttpParams().set('startDate', startDate).set('endDate', endDate); // Agregar el parámetro 'country'
 
     return this.http.get(`${this.apiBaseUrl}/api/matches/getMatchesByDate`, { params });
   }
