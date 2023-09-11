@@ -15,9 +15,9 @@
         </ng-template>
         <ng-template pTemplate="body" let-match>
             <tr>
-                <td>{{ match.team_home }}</td>
-                <td>{{ match.league }}</td>
-                <td>{{ match.team_away }}</td>
+                <td><img class="team-icon" src="{{ match.home_team_logo }}" alt="Logo equipo home">{{ match.team_home }}</td>
+                <td><img class="team-icon" src="{{ match.flag }}" alt="Bandera país"></td>
+                <td><img class="team-icon" src="{{ match.away_team_logo }}" alt="Logo equipo visita">{{ match.team_away }}</td>
                 <td>{{ match.date | date }}</td>
             </tr>
         </ng-template>

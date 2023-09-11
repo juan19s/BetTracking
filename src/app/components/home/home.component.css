@@ -21,6 +21,11 @@ tr:hover {
   margin-top: 10px;
 }
 
+.team-icon{
+  width: 20px;
+  height: 20px;
+}
+
 .subtitle {
   margin-top: 20px;
   text-align: center;
