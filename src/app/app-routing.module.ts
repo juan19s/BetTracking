@@ -4,6 +4,7 @@ import { HomeComponent } from './components/home/home.component';
 import { TableLeagueStatsComponent } from './components/table-league-stats/table-league-stats.component';
 import { LoginComponent } from './components/login/login.component';
 import { SinginComponent } from './components/singin/singin.component';
+import { MatchComponent } from './components/match/match.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -11,6 +12,7 @@ const routes: Routes = [
   { path: 'singin', component: SinginComponent },
   { path: 'home', component: HomeComponent },
   { path: 'league/:id', component: TableLeagueStatsComponent },
+  { path: 'match/:id', component: MatchComponent },
   { path: '**', redirectTo: '/login', pathMatch: 'full' }
 ];
 

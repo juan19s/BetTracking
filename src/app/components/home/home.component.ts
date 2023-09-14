@@ -220,4 +220,8 @@ export class HomeComponent {
       // this.fillTable();
     });
   }
+
+  openMatch(info: any): void {
+    console.log(info);
+  }
 }

@@ -20,6 +20,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { ToastModule } from 'primeng/toast';
 import { PasswordModule } from 'primeng/password';
 import { CalendarModule } from 'primeng/calendar';
+import { MatchComponent } from './components/match/match.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { CalendarModule } from 'primeng/calendar';
     NavComponent,
     TableLeagueStatsComponent,
     LoginComponent,
-    SinginComponent
+    SinginComponent,
+    MatchComponent
   ],
   imports: [
     BrowserModule,

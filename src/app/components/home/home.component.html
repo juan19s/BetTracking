@@ -14,10 +14,10 @@
             </tr>
         </ng-template>
         <ng-template pTemplate="body" let-match>
-            <tr>
-                <td><img class="team-icon" src="{{ match.home_team_logo }}" alt="Logo equipo home">{{ match.team_home }}</td>
-                <td><img class="team-icon" src="{{ match.flag }}" alt="Bandera país"></td>
-                <td><img class="team-icon" src="{{ match.away_team_logo }}" alt="Logo equipo visita">{{ match.team_away }}</td>
+            <tr [routerLink]="['/match', match.id_match]" (click)="match">
+                <td ><img class="team-icon" src="{{ match.home_team_logo }}" alt="Logo equipo home">{{ match.team_home }}</td>
+                <td><img class="team-icon" src="{{ match.flag }}" alt="Bandera país">{{ match.team_home }}</td>
+                <td ><img class="team-icon" src="{{ match.away_team_logo }}" alt="Logo equipo visita">{{ match.team_away }}</td>
                 <td>{{ match.date | date }}</td>
             </tr>
         </ng-template>
